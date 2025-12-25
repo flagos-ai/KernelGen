@@ -1,0 +1,25 @@
+import torch
+
+
+def relu(input: torch.Tensor) -> torch.Tensor:
+    if not isinstance(input, torch.Tensor):
+        raise TypeError("input must be a torch.Tensor")
+
+    dtype = input.dtype
+
+    if input.is_complex():
+        raise TypeError("relu does not support complex tensors.")
+
+    if input.is_floating_point():
+        # Use float32 for computation when input is lower precision
+        if dtype in (torch.float16, torch.bfloat16):
+            return torch.relu(input.to(torch.float32)).to(dtype)
+        else:
+            return torch.relu(input)
+
+    if dtype == torch.bool:
+        # For boolean tensors, ReLU is effectively identity
+        return input.clone()
+
+    # For integer tensors, use clamp_min to emulate ReLU
+    return torch.clamp_min(input, 0)

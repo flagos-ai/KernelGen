@@ -1,0 +1,33 @@
+import bench
+from bench.sandbox.test.test_parametrize import parametrize, label
+from bench.sandbox.config import DEVICE as device
+from bench.sandbox.utils.accuracy_utils import to_reference
+import torch
+
+
+@label("relu_benchmark")
+@parametrize("shape", [(512,), (64, 128), (8, 32, 64), (2, 4, 8, 16), (1,)])
+@parametrize("dtype", [torch.float16, torch.float32, torch.bfloat16])
+def relu_benchmark(shape, dtype):
+    import torch.utils.benchmark as benchmark
+    from bench_v2.sandbox.test.perfermance.attri_util import CustomBenchmarkResult
+    import triton
+
+    quantiles = [0.5, 0.2, 0.8]
+
+    # initialize the input data based on the parameters
+    input = torch.randn(shape, dtype=dtype, device=device)
+
+    # cast to reference dtype if necessary
+    ref_input = to_reference(input, True)
+
+    ms_torch, _, _ = triton.testing.do_bench(lambda: bench.relu(ref_input), rep=100, quantiles=quantiles)
+    ms_triton, _, _ = triton.testing.do_bench(lambda: bench.triton.relu(input), rep=100, quantiles=quantiles)
+
+    speedup = ms_torch / ms_triton
+    result = CustomBenchmarkResult(
+        ref_time=ms_torch,
+        res_time=ms_triton,
+        speedup=speedup,
+    )
+    return result
