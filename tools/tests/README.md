@@ -15,7 +15,7 @@ Test the converter tool with these files:
 
 ```bash
 cd /share/project/tj/fork/FlagGems
-python src/flag_gems/experimental_ops/tools/convert.py \
+python src/flag_gems/experimental_ops/tools/kernelgen_to_flaggems.py \
     src/flag_gems/experimental_ops/tools/tests \
     /tmp/output \
     relu
