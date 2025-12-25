@@ -5,7 +5,7 @@ This tool converts bench-format tests to FlagGems pytest format.
 ## Usage
 
 ```bash
-python src/flag_gems/experimental_ops/tools/convert.py <input_dir> <output_dir> <operator_name>
+python tools/kernelgen_to_flaggems.py <input_dir> <output_dir> <operator_name>
 ```
 
 ## Input Files
@@ -25,5 +25,5 @@ The tool generates 2 files:
 ## Example
 
 ```bash
-python src/flag_gems/experimental_ops/tools/convert.py ./input_files ./output_files relu
+python tools/kernelgen_to_flaggems.py ./input_files ./output_files relu
 ```
