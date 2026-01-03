@@ -15,45 +15,45 @@ for more information read https://sphinx-multiproject.readthedocs.io/.
 import os
 import sys
 
-# 修复导入：检查不同的导入方式
+# Fix imports: check different import methods
 try:
-    # 首先尝试 sphinx_multiproject
+    # First try sphinx_multiproject
     from sphinx_multiproject.utils import get_project
     print("INFO: Using sphinx_multiproject")
 except ImportError:
     try:
-        # 然后尝试 multiproject
+        # Then try multiproject
         from multiproject.utils import get_project
         print("INFO: Using multiproject")
     except ImportError:
-        # 如果都失败，创建一个简单的 get_project 函数
+        # If both fail, create a simple get_project function
         print("WARNING: sphinx-multiproject not found. Using simple project selection.")
         def get_project(projects):
             return os.environ.get("PROJECT", "en")
 
 sys.path.append(os.path.abspath("_ext"))
 
-# 基础扩展 - 只包含实际安装的
+# Base extensions - only include actually installed ones
 extensions = [
-    "multiproject",  # Sphinx扩展名，不是Python模块名
+    "multiproject",  # Sphinx extension name, not Python module name
     "myst_parser",
     "sphinx_copybutton",
     "sphinx_design",
-    # 暂时注释掉可能出问题的扩展
-    # "sphinx_tabs.tabs",  # 可能模块名不同
+    # Temporarily comment out extensions that might cause issues
+    # "sphinx_tabs.tabs",  # Module name might be different
     # "sphinx_prompt",
     "sphinx.ext.autodoc",
     "sphinx.ext.autosectionlabel",
     "sphinx.ext.extlinks",
     "sphinx.ext.intersphinx",
-    # 注释掉未安装的扩展
+    # Comment out uninstalled extensions
     # "sphinxcontrib.httpdomain",
     # "sphinxcontrib.video",
     # "sphinxemoji.sphinxemoji",
     "sphinxext.opengraph",
 ]
 
-# 检查并添加实际安装的扩展
+# Check and add actually installed extensions
 try:
     import sphinx_tabs
     extensions.append("sphinx_tabs.tabs")
@@ -79,8 +79,8 @@ multiproject_projects = {
     "zh": {
         "use_config_file": False,
         "config": {
-            "project": "KernelGen 文档",
-            "html_title": "KernelGen 文档",
+            "project": "KernelGen Documentation",
+            "html_title": "KernelGen Documentation",
         },
     },
 }
@@ -166,7 +166,7 @@ gettext_compact = False
 html_theme = "sphinx_book_theme"
 html_static_path = ["_static", f"{docset}/_static"]
 html_css_files = ["css/custom.css"]
-# 先不添加 sphinx_prompt_css.css，可能不存在
+# Don't add sphinx_prompt_css.css for now, it might not exist
 html_js_files = []
 
 html_logo = "img/logo.svg"
