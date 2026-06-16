@@ -265,13 +265,18 @@ suppress_warnings = ["epub.unknown_project_files"]
 # =====================================================================
 
 # 1. Inject front-end fallback scripts early in HTML <head> for Chinese localization.
-# This bypasses the Sphinx 9+ 'ChineseStemmer is not defined' runtime crash.
+# This bypasses the Sphinx 9+ 'stemmer.stemWord is not a function' runtime crash.
 html_context = {}
 if docset == "zh":
     html_context["metatags"] = """
     <script>
         if (typeof Stemmer === 'undefined') {
-            window.Stemmer = function() { return { stem: function(w){return w;} }; };
+            window.Stemmer = function() { 
+                return { 
+                    stem: function(w){ return w; },
+                    stemWord: function(w){ return w; }
+                }; 
+            };
         }
         if (typeof ChineseStemmer === 'undefined') {
             window.ChineseStemmer = window.Stemmer;
