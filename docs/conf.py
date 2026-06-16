@@ -158,6 +158,10 @@ man_pages = [
 
 language = "en" if docset == "en" else "zh_CN"
 
+# set search language for Chinese projects
+if language == "zh_CN":
+    html_search_language = "zh"
+
 locale_dirs = [
     f"{docset}/locale/",
 ]
