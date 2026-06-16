@@ -158,9 +158,10 @@ man_pages = [
 
 language = "en" if docset == "en" else "zh_CN"
 
-# set search language for Chinese projects
-if language == "zh_CN":
-    html_search_language = "zh"
+# 强制保障：只要当前构建的目标不是英文，或者当前环境被 RTD 强行指定为了中文
+if docset == "zh" or language in ["zh_CN", "zh"]:
+    language = "zh_CN"
+    html_search_language = "zh"  # 确保给 Sphinx 服务端/前端搜索注入正确的中文化标识
 
 locale_dirs = [
     f"{docset}/locale/",
