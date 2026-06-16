@@ -13,4 +13,5 @@ sphinx-tippy>=0.4.3
 sphinx-togglebutton
 sphinx-tabs==3.4.7
 sphinx-prompt==1.10.2
+# trigger remote cache rebuild for jieba search
 jieba
