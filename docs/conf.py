@@ -51,6 +51,8 @@ extensions = [
     # "sphinxcontrib.video",
     # "sphinxemoji.sphinxemoji",
     "sphinxext.opengraph",
+    "sphinx_tippy",
+    "sphinx_togglebutton",
 ]
 
 # Check and add actually installed extensions
