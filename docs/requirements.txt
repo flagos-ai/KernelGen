@@ -1,3 +1,4 @@
+sphinx==8.2.3
 myst-parser
 sphinx-multiproject==1.0.0
 sphinx-rtd-theme
@@ -14,4 +15,4 @@ sphinx-togglebutton
 sphinx-tabs==3.4.7
 sphinx-prompt==1.10.2
 # trigger remote cache rebuild for jieba search
-jieba
+# jieba

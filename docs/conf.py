@@ -170,9 +170,9 @@ gettext_compact = False
 
 html_theme = "sphinx_book_theme"
 html_static_path = ["_static", f"{docset}/_static"]
-html_css_files = ["css/custom.css"]
+# html_css_files = ["css/custom.css"]
 # Don't add sphinx_prompt_css.css for now, it might not exist
-html_js_files = []
+# html_js_files = []
 
 # html_logo = "img/logo.svg"
 html_favicon = "img/favicon.svg"
@@ -266,43 +266,43 @@ suppress_warnings = ["epub.unknown_project_files"]
 
 # 1. Inject front-end fallback scripts early in HTML <head> for Chinese localization.
 # This bypasses the Sphinx 9+ 'stemmer.stemWord is not a function' runtime crash.
-html_context = {}
-if docset == "zh":
-    html_context["metatags"] = """
-    <script>
-        if (typeof Stemmer === 'undefined') {
-            window.Stemmer = function() { 
-                return { 
-                    stem: function(w){ return w; },
-                    stemWord: function(w){ return w; }
-                }; 
-            };
-        }
-        if (typeof ChineseStemmer === 'undefined') {
-            window.ChineseStemmer = window.Stemmer;
-        }
-    </script>
-    """
+# html_context = {}
+# if docset == "zh":
+#     html_context["metatags"] = """
+#     <script>
+#         if (typeof Stemmer === 'undefined') {
+#             window.Stemmer = function() { 
+#                 return { 
+#                     stem: function(w){ return w; },
+#                     stemWord: function(w){ return w; }
+#                 }; 
+#             };
+#         }
+#         if (typeof ChineseStemmer === 'undefined') {
+#             window.ChineseStemmer = window.Stemmer;
+#         }
+#     </script>
+#     """
 
-def setup(app):
-    # Prevent MIME type errors (404 returned as text/html) caused by missing custom.css
-    # by forcing an empty placeholder into both the root and localized static dirs.
-    import shutil
-    for target_dir in [app.srcdir, os.path.join(app.srcdir, docset)]:
-        css_dir = os.path.join(target_dir, '_static', 'css')
-        os.makedirs(css_dir, exist_ok=True)
-        with open(os.path.join(css_dir, 'custom.css'), 'w', encoding='utf-8') as f:
-            f.write('/* custom styles to prevent RTD 404 */\n')
+# def setup(app):
+#     # Prevent MIME type errors (404 returned as text/html) caused by missing custom.css
+#     # by forcing an empty placeholder into both the root and localized static dirs.
+#     import shutil
+#     for target_dir in [app.srcdir, os.path.join(app.srcdir, docset)]:
+#         css_dir = os.path.join(target_dir, '_static', 'css')
+#         os.makedirs(css_dir, exist_ok=True)
+#         with open(os.path.join(css_dir, 'custom.css'), 'w', encoding='utf-8') as f:
+#             f.write('/* custom styles to prevent RTD 404 */\n')
 
-    # Runtime correction for DOCUMENTATION_OPTIONS based on the current docset
-    app.add_js_file(None, body=f'DOCUMENTATION_OPTIONS.LANGUAGE = "{language}";')
-    if docset == "zh":
-        app.add_js_file(None, body='DOCUMENTATION_OPTIONS.URL_ROOT = "../";')
-    elif docset == "en":
-        app.add_js_file(None, body='DOCUMENTATION_OPTIONS.URL_ROOT = "./";')
+#     # Runtime correction for DOCUMENTATION_OPTIONS based on the current docset
+#     app.add_js_file(None, body=f'DOCUMENTATION_OPTIONS.LANGUAGE = "{language}";')
+#     if docset == "zh":
+#         app.add_js_file(None, body='DOCUMENTATION_OPTIONS.URL_ROOT = "../";')
+#     elif docset == "en":
+#         app.add_js_file(None, body='DOCUMENTATION_OPTIONS.URL_ROOT = "./";')
 
-# 2. Dynamically assign search engine language to avoid indexing mismatch
-if docset == "zh":
-    html_search_language = 'zh'
-else:
-    html_search_language = 'en'
+# # 2. Dynamically assign search engine language to avoid indexing mismatch
+# if docset == "zh":
+#     html_search_language = 'zh'
+# else:
+#     html_search_language = 'en'
