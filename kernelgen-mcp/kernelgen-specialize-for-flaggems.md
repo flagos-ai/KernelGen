@@ -3,6 +3,23 @@ name: kernelgen-specialize-for-flaggems
 description: Automatically migrate GPU Triton operators to Ascend NPU using the dedicated MCP specialize_kernel tool and integrate into the FlagGems project. Complete workflow: MCP auto-specialization -> FlagGems adaptation -> file placement -> operator registration -> auto testing -> performance verification. Supports four integration modes: vendor-ops (default), vendor-fused, override-builtin, experimental. Trigger scenarios: migrating CUDA Triton operators to FlagGems, adding Ascend backend operators for FlagGems, optimizing NPU implementation of existing FlagGems operators.
 ---
 
+<!--
+ Copyright 2026 FlagOS Contributors
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ -->
+
+
 # GPU Triton Operator MCP Auto-Migration + FlagGems Integration
 
 This skill combines the MCP auto-specialization tool (`specialize_kernel`) with FlagGems framework integration, enabling a fully automated workflow from GPU Triton operators to Ascend NPU FlagGems operators.

@@ -3,6 +3,23 @@ name: kernelgen-specialize
 description: Migrate GPU Triton operators to Huawei Ascend NPU. Supports two modes: (1) Automatic migration - automatically specialize operators to the Ascend platform via the dedicated MCP specialize_kernel tool; (2) Manual migration guide - provides complete architecture difference analysis, code modification steps, common issue resolution (coreDim exceeding limits, UB overflow, memory access alignment, etc.) and performance optimization tips. Trigger scenarios: GPU to NPU migration, device='cuda' changed to 'npu', Ascend adaptation, "Triton migration", "NPU porting", "Ascend migration", etc.
 ---
 
+<!--
+ Copyright 2026 FlagOS Contributors
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ -->
+
+
 # Complete Guide: Migrating GPU Triton Operators to Ascend NPU
 
 This guide covers the complete process of migrating Triton operators from GPU to Ascend NPU, including architecture difference analysis, code migration steps, common issue resolution, and performance optimization tips.

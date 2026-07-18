@@ -1,3 +1,19 @@
+<!--
+ Copyright 2026 FlagOS Contributors
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ -->
+
 # 自动调优 Kernel
 
 KernelGen 算子开发 MCP 工具集集成了用于自动调优 Kernel 的 MCP 工具。您只需提供算子的功能描述，KernelGen 即可通过多轮智能迭代自动生成、验证并持续优化算子实现，最终交付高性能 Triton Kernel 及完整的测试报告。
