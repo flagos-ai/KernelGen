@@ -16,7 +16,7 @@
 
 # 支持的硬件平台
 
-KernelGen Web 内置支持以下测试设备：华为昇腾（Huawei Ascend）、海光（Hygon）、天数智芯（Iluvatar）、沐曦（MetaX）、摩尔线程（Mthreads）、曦望（Sunrise）和 NVIDIA。
+KernelGen Web 内置支持以下测试设备：华为昇腾（Huawei Ascend）、海光（Hygon）、天数智芯（Iluvatar）、沐曦（MetaX）、摩尔线程（Mthreads）、曦望（Sunrise）、清微智能（Tsingmicro）和 NVIDIA。
 
 - **生成 Kernel**：
   - 若用户未选择测试设备，默认使用 NVIDIA。
