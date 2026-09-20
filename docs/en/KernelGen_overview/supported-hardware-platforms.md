@@ -16,7 +16,7 @@
 
 # Supported hardware platforms
 
-KernelGen internally integrates support for the following testing devices: Huawei Ascend, Hygon, Iluvatar, MetaX, Mthreads, Sunrise, and NVIDIA.
+KernelGen internally integrates support for the following testing devices: Huawei Ascend, Hygon, Iluvatar, MetaX, Mthreads, Sunrise, Tsingmicro, and NVIDIA.
 
 - **Generating Kernels**:
   - If users do not select a testing device, NVIDIA is used by default.

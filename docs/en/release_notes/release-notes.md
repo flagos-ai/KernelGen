@@ -18,6 +18,11 @@
 
 This section includes the KernelGen release information.
 
+## V2.2.0
+
+- **Added features**
+  - Added support for the Tsingmicro AI accelerator platform, expanding the number of supported chips from seven to eight.
+
 ## V2.1.0
 
 - **Added features**
